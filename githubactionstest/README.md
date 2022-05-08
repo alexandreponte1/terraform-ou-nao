@@ -25,3 +25,14 @@ AWS_SECRET_ACCESS_KEY
 
 
 
+########################################################
+
+
+actions document
+
+https://futurestud.io/tutorials/github-actions-trigger-builds-on-schedule-cron
+
+
+
+
+
