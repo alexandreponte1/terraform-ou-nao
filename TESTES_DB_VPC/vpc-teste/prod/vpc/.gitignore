@@ -1,0 +1,9 @@
+.terraform/
+.terraform.*
+.DS_Store
+example.tf
+terraform.tfplan
+terraform.tfstate
+tfplan.out
+plan.tfout
+.terraform.lock.hcl
