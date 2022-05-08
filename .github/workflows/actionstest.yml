@@ -5,7 +5,7 @@ on:
      branches:
       - develop
      paths:
-         - 'services/api-graphql/**/*'
+         - 'githubactionstest/'
     paths-ignore:
        - '**.md'
     pull_request:
