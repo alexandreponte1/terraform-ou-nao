@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Install Terraform
+      working-directory: ./githubactionstest
       env:
         TERRAFORM_VERSION: "1.1.6"
       run: |
@@ -27,24 +28,26 @@ jobs:
         sudo mv terraform /usr/local/bin/
 
     - name: Verify Terraform version
+      working-directory: ./githubactionstest
       run: terraform --version
 
     - name: Terraform init
+      working-directory: ./githubactionstest
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: terraform init -input=false
 
     - name: Terraform format
+      working-directory: ./githubactionstest
       run: terraform fmt
 
     - name: Terraform validation
+      working-directory: ./githubactionstest
       run: terraform validate
 
-    - name: Terraform ls
-      run: ls -lha
-
     - name: Terraform apply
+      working-directory: ./githubactionstest
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
