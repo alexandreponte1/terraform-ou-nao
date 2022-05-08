@@ -4,6 +4,10 @@ on:
   push:
     branches:
     - develop
+#    paths:
+#        - 'githubactionstest/*'
+#        - '!**.md'
+
     paths:
         - 'githubactionstest/*'
         - '!**.md'
@@ -12,18 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-
-    - name: Some check on branch
-      id: branch_check
-      run: |
-        echo "Running on branch ${{ github.ref }}"
-        if [ "${{ github.ref }}" = "refs/heads/develop" ]; then
-          echo "::set-output name=env_name::${{ secrets.AWS_ACCESS_KEY_ID }}"
-        elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
-          echo "::set-output name=env_name::Test"
-        else
-           echo "::set-output name=env_name::erro"
-        fi
 
     - name: Install Terraform
       env:
@@ -39,7 +31,7 @@ jobs:
 
     - name: Terraform init
       env:
-        AWS_ACCESS_KEY_ID: ${{ steps.branch_check.outputs.env_name }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: terraform init -input=false
 
@@ -51,7 +43,7 @@ jobs:
 
     - name: Terraform apply
       env:
-        AWS_ACCESS_KEY_ID: ${{ steps.branch_check.outputs.env_name }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: terraform apply -auto-approve -input=false
 
