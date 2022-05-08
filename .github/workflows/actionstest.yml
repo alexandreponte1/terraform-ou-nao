@@ -7,8 +7,7 @@ on:
       - develop
      paths:
          - 'githubactionstest/'
-     paths-ignore:
-       - '**.md'
+         - '!**.md'
 jobs:
   terraform_apply:
     runs-on: ubuntu-latest
