@@ -6,6 +6,7 @@ on:
     - develop
     paths:
     - '!**.md'
+    - '!githubactionstest/**.md'
     - 'githubactionstest/**'
 jobs:
   terraform_apply:
