@@ -4,16 +4,15 @@ on:
   push:
     branches:
     - develop
-#    paths:
-#        - 'githubactionstest/*'
-#        - '!**.md'
-
-    paths:
-        - 'githubactionstest/*'
-        - '!**.md'
+    paths-ignore:
+    - '**.md'
 jobs:
   terraform_apply:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: githubactionstest
+
     steps:
     - uses: actions/checkout@v1
 
@@ -25,9 +24,12 @@ jobs:
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
         unzip terraform_"$tf_version"_linux_amd64.zip
         sudo mv terraform /usr/local/bin/
-
+        
     - name: Verify Terraform version
       run: terraform --version
+      
+    - name: Verify folder
+      run: ls -lha
 
     - name: Terraform init
       env:
