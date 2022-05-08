@@ -1,0 +1,21 @@
+{
+  "Version": "2012-10-17",
+  "Id": "sqspolicy",
+  "Statement": [{
+    "Sid": "Allow-SNS-SendMessage",
+    "Effect": "Allow",
+    "Principal": {
+      "Service": "sns.amazonaws.com"
+    },
+    "Action": [
+    "sqs:SendMessage",
+    "sqs:DeleteMessage"
+    ],
+    "Resource": "${aws_sqs_queue.my_first_sqs.arn}",
+    "Condition": {
+      "ArnEquals": {
+        "aws:SourceArn": "${aws_sns_topic.meusns.arn}"
+      }
+    }
+  }]
+}
