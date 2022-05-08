@@ -4,9 +4,9 @@ on:
   push:
     branches:
     - develop
-    paths:
-        - 'githubactionstest/*'
-        - '!**.md'
+#    paths:
+#        - 'githubactionstest/*'
+#        - '!**.md'
 jobs:
   terraform_apply:
     runs-on: ubuntu-latest
