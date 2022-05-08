@@ -27,6 +27,9 @@ jobs:
         
     - name: Verify Terraform version
       run: terraform --version
+      
+    - name: Verify folder
+      run: ls -lha
 
     - name: Terraform init
       env:
