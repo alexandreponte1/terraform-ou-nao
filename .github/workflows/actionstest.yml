@@ -41,6 +41,9 @@ jobs:
     - name: Terraform validation
       run: terraform validate
 
+    - name: Terraform ls
+      run: ls -lha
+
     - name: Terraform apply
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
