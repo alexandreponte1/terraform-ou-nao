@@ -9,3 +9,9 @@ variable "aws_profile" {
   description = ""
   default     = "playground"
 }
+
+
+variable "cdirs_acesso_remoto" {
+  type    = list(string)
+  default = ["seu-ip/32"]
+}
