@@ -13,5 +13,5 @@ variable "aws_profile" {
 
 variable "cdirs_acesso_remoto" {
   type    = list(string)
-  default = ["seu-ip/32"]
+  default = ["186.228.163.67/32"]
 }
