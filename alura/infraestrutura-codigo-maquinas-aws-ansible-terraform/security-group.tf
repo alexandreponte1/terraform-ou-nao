@@ -15,10 +15,17 @@ resource "aws_security_group" "webapp" {
     to_port     = 80
     cidr_blocks = var.cdirs_acesso_remoto
   }
-    ingress {
+  ingress {
     from_port   = 8080
     protocol    = "TCP"
     to_port     = 8080
+    cidr_blocks = var.cdirs_acesso_remoto
+  }
+
+  ingress {
+    from_port   = 8000
+    protocol    = "TCP"
+    to_port     = 8000
     cidr_blocks = var.cdirs_acesso_remoto
   }
   ingress {
