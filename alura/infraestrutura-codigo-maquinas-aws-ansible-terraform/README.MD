@@ -19,3 +19,7 @@ sqlparse==0.4.2
 django-admin startproject setup .
 
 python manage.py runserver 0.0.0.0:8000
+
+
+
+a não
