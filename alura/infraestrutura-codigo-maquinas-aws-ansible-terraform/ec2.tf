@@ -8,11 +8,11 @@ resource "aws_instance" "app_server" {
   #               nohup busybox httpd -f -p 8080 &
   #               EOF
   #user_data     = file("script.sh")
-  key_name      = "iac-alura"
+  key_name = "iac-alura"
   #criar uma key no console da aws, descomentar a linha, e baixar a chave criada.
 
   tags = {
-    Name = "Primeira_ou_nao"
+    Name = "terraform ANsible Python"
   }
 
   vpc_security_group_ids = [aws_security_group.webapp.id]
