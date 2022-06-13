@@ -71,3 +71,6 @@ plan.tfout
 terraform*
 terraform.tfstate
 terraform.tfstate.backup
+IaC-DEV
+IaC-Prod
+*.pub
