@@ -13,7 +13,7 @@ variable "aws_profile" {
 
 variable "cdirs_acesso_remoto" {
   type    = list(string)
-  default = ["186.228.186.44/32"]
+  default = ["0.0.0.0./00"]
 }
 
 variable "chave" {
