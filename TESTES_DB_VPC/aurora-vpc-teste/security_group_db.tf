@@ -32,21 +32,21 @@ resource "aws_security_group" "aurora" {
   # }
 
 
-# #incluso para teste
-#   ingress {
-#     from_port   = 3306
-#     to_port     = 3306
-#     protocol    = "tcp"
-#     cidr_blocks = [aws_subnet.pub_a.cidr_block]
-#   }
+  # #incluso para teste
+  #   ingress {
+  #     from_port   = 3306
+  #     to_port     = 3306
+  #     protocol    = "tcp"
+  #     cidr_blocks = [aws_subnet.pub_a.cidr_block]
+  #   }
 
 
-#   ingress {
-#     from_port   = 3306
-#     to_port     = 3306
-#     protocol    = "tcp"
-#     cidr_blocks = [aws_subnet.pub_b.cidr_block]
-#   }
+  #   ingress {
+  #     from_port   = 3306
+  #     to_port     = 3306
+  #     protocol    = "tcp"
+  #     cidr_blocks = [aws_subnet.pub_b.cidr_block]
+  #   }
 
 
   tags = merge(local.common_tags, { Name = "Database MySQL" })

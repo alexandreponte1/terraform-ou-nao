@@ -5,8 +5,8 @@
 # }
 
 resource "aws_lambda_function" "myLambda" {
-  s3_bucket = "yuyuhakushobucket"
-  s3_key    = "lambda_function.zip"
+  s3_bucket     = "yuyuhakushobucket"
+  s3_key        = "lambda_function.zip"
   function_name = "firstFunction"
   role          = aws_iam_role.lambda_role.arn
   handler       = "hello.lambda_handler"

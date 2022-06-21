@@ -1,7 +1,7 @@
 module "ecs" {
-  source = "terraform-aws-modules/ecs/aws"
-  version = "3.5.0"
-  name               = var.ambiante
+  source             = "terraform-aws-modules/ecs/aws"
+  version            = "3.5.0"
+  name               = var.ambiente
   container_insights = true
   capacity_providers = ["FARGATE"]
   default_capacity_provider_strategy = [

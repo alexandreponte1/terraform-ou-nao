@@ -3,7 +3,7 @@ resource "aws_sqs_queue" "voar" {
   visibility_timeout_seconds = 30
   message_retention_seconds  = 345600
   max_message_size           = 262144
-  receive_wait_time_seconds = 10
+  receive_wait_time_seconds  = 10
 }
 
 resource "aws_sqs_queue_policy" "sqs_policy" {
