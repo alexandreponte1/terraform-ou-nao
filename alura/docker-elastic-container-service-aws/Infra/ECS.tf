@@ -1,9 +1,7 @@
 module "ecs" {
-  source  = "terraform-aws-modules/ecs/aws"
+  source = "terraform-aws-modules/ecs/aws"
   version = "3.5.0"
-  # insert the 1 required variable here
-
-  name               = var.ambiente
+  name               = var.ambiante
   container_insights = true
   capacity_providers = ["FARGATE"]
   default_capacity_provider_strategy = [
@@ -12,6 +10,7 @@ module "ecs" {
     }
   ]
 }
+
 resource "aws_ecs_task_definition" "Django-API" {
   family                   = "Django-API"
   requires_compatibilities = ["FARGATE"]
@@ -23,7 +22,7 @@ resource "aws_ecs_task_definition" "Django-API" {
     [
       {
         "name"      = "producao"
-        "image"     = "634793161089.dkr.ecr.us-east-1.amazonaws.com/producao:v1"
+        "image"     = "595438810944.dkr.ecr.us-east-1.amazonaws.com/producao:v1"
         "cpu"       = 256
         "memory"    = 512
         "essential" = true
@@ -39,10 +38,9 @@ resource "aws_ecs_task_definition" "Django-API" {
 }
 
 
-
 resource "aws_ecs_service" "Django-API" {
   name            = "Django-API"
-  cluster         = module.ecs.ecs_cluster_id  
+  cluster         = module.ecs.ecs_cluster_id
   task_definition = aws_ecs_task_definition.Django-API.arn
   desired_count   = 3
 
