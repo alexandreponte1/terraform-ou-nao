@@ -20,18 +20,12 @@ variable "nome_repositorio" {
   type = string
 }
 
-# variable "descricao" {
-#   type = string
-# }
 
-# variable "max" {
-#   type = number
-# }
+variable "cargoIAM" {
+  type = string
+}
 
-# variable "maquina" {
-#   type = string
-# }
 
-# variable "ambiente" {
-#   type = string
-# }
+variable "ambiente" {
+  type = string
+}
