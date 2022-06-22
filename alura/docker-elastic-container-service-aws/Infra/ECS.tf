@@ -51,12 +51,12 @@ resource "aws_ecs_service" "Django-API" {
   }
 
   network_configuration {
-      subnets = module.vpc.private_subnets
-      security_groups = [aws_security_group.privado.id]
+    subnets         = module.vpc.private_subnets
+    security_groups = [aws_security_group.privado.id]
   }
 
   capacity_provider_strategy {
-      capacity_provider = "FARGATE"
-      weight = 1 #100/100
+    capacity_provider = "FARGATE"
+    weight            = 1 #100/100
   }
 }
