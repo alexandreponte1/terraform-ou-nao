@@ -5,11 +5,11 @@ data "archive_file" "lambda_zip" {
 }
 
 resource "aws_lambda_function" "myLambda" {
-  filename      = "lambda_function.zip"
-  function_name = "firstFunction"
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "hello.lambda_handler"
-  runtime       = "python3.8"
+  filename         = "lambda_function.zip"
+  function_name    = "firstFunction"
+  role             = aws_iam_role.lambda_role.arn
+  handler          = "hello.lambda_handler"
+  runtime          = "python3.8"
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 
 }

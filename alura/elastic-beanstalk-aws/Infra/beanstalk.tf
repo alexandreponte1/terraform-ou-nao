@@ -8,25 +8,25 @@ resource "aws_elastic_beanstalk_environment" "ambiente_beanstalk" {
   application         = aws_elastic_beanstalk_application.aplicacao_beanstalk.name
   solution_stack_name = "64bit Amazon Linux 2 v3.4.16 running Docker"
 
-setting {
+  setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
     value     = var.maquina
   }
 
-setting {
+  setting {
     namespace = "aws:autoscaling:asg"
     name      = "MaxSize"
     value     = var.max
   }
 
-setting {
+  setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
     value     = aws_iam_instance_profile.beanstalk_ec2_profile.name
   }
 
-} 
+}
 
 resource "aws_elastic_beanstalk_application_version" "default" {
   depends_on = [

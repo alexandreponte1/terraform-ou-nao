@@ -15,7 +15,7 @@ resource "aws_security_group" "acesso" {
     to_port     = 80
     cidr_blocks = var.cdirs_acesso_remoto
   }
-    ingress {
+  ingress {
     from_port   = 8080
     protocol    = "TCP"
     to_port     = 8080

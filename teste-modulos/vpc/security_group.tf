@@ -39,6 +39,6 @@ resource "aws_security_group" "aurora" {
   }
 
   tags = {
-      Name = "Database MySQL"
-    }
+    Name = "Database MySQL"
+  }
 }

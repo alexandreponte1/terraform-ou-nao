@@ -25,7 +25,7 @@ resource "aws_rds_cluster" "default" {
   database_name           = "goku"
   master_username         = "gohan"
   master_password         = var.dbpassword
-  allocated_storage         = 30
+  allocated_storage       = 30
   backup_retention_period = 7
   preferred_backup_window = "00:03-09:00"
   skip_final_snapshot     = true

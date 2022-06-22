@@ -25,7 +25,7 @@ resource "aws_cognito_user_pool" "this" {
     require_uppercase = false
   }
 
-# Custom attribute
+  # Custom attribute
   schema {
     attribute_data_type      = "String"
     developer_only_attribute = false
