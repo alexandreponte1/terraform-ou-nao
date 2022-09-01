@@ -15,8 +15,19 @@ provider "google" {
   #zone    = "us-central1-c"
 }
 
-#Enable thin in console
-#serviceusage.googleapis.com
-#cloudresourcemanager.googleapis.com
+
+resource "google_project_service" "gcpservices" {
+  for_each = toset(var.gcp_service_list)
+  project  = var.project_id
+  service  = each.key
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+}
+
 
 
