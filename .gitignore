@@ -74,7 +74,12 @@ terraform.tfstate.backup
 IaC-DEV
 IaC-Prod
 *.pub
-
+*.png
+*.jpg
+.png
+.jpg
+*.jpeg
+.jpeg
 *.log
 *.pot
 *.pyc

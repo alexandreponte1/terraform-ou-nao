@@ -1,0 +1,1 @@
+export GOOGLE_APPLICATION_CREDENTIALS=/path/of/your/key/Downloads/key.json
