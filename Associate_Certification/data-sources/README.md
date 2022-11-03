@@ -1,0 +1,1 @@
+Subir primeiro a infra estrutura na pasta #learn-terraform-data-sources-vpc, pois a infra estrutura da pasta #learn-terraform-data-sources-app utiliza alguns recurso criados através da pasta #learn-terraform-data-sources-vpc
