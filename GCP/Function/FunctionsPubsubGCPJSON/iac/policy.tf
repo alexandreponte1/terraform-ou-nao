@@ -66,7 +66,7 @@
 
 # Create secret with labels
 
-# printf "senha bonita linda maravilhosa" | gcloud secrets create segredoComLabel --data-file=- \
+# printf "senha bonita" | gcloud secrets create segredoComLabel --data-file=- \
 #   --replication-policy "user-managed" \
 #   --locations "us-central1" \
 #   --next-rotation-time="2022-10-09T09:00:00Z" \
