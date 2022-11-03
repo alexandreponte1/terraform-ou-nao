@@ -1,3 +1,17 @@
+Por mais que eu utilize uma conta de serviço para criar a function, ela aparece criada com outra conta.
+Nesse caso após criar a function é necessário pegar essa conta que normalmente é assim "@appspot.gserviceaccount.com.
+
+Incluir essa conta no projeto com as permissões de acesso ao secret manager(leitura e gravação)
+
+assim é possivel incluir essa senha 
+
+
+
+
+
+
+
+
 
 
 resource "google_project_service" "project" {
@@ -68,14 +82,18 @@ Com base na doc = https://cloud.google.com/secret-manager/docs/event-notificatio
 Antes de criar o secret é necessário criar a identidade do serviço.
 O comando abaixo vai gerar essa conta de serviço e com ela podemos dar permissão para o secret manager publicar no topico Pub/Sub
 
+
+
+
+
 gcloud beta services identity create \
     --service "secretmanager.googleapis.com" \
-    --project "playground-s-11-4b4f725c"
+    --project "active-chimera-359118"
 
-service-630235711089@gcp-sa-secretmanager.iam.gserviceaccount.com
+service-716970710829@gcp-sa-secretmanager.iam.gserviceaccount.com
 
 
-gcloud pubsub topics add-iam-policy-binding secretTopicGOKU  --member serviceAccount:service-750020240743@gcp-sa-secretmanager.iam.gserviceaccount.com  --role "roles/pubsub.publisher"
+gcloud pubsub topics add-iam-policy-binding secretTopicAlexandre  --member serviceAccount:service-716970710829@gcp-sa-secretmanager.iam.gserviceaccount.com  --role "roles/pubsub.publisher"
 
 
 

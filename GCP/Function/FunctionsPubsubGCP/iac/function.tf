@@ -39,7 +39,7 @@ resource "google_storage_bucket_object" "zip" {
 
 # Create the Cloud function triggered by a `Finalize` event on the bucket
 resource "google_cloudfunctions_function" "function" {
-  name    = "gokupub"
+  name    = "alexandresp"
   runtime = "python37" # of course changeable
 
   # Get the source code of the cloud function as a Zip compression
@@ -49,11 +49,6 @@ resource "google_cloudfunctions_function" "function" {
   # Must match the function name in the cloud function `main.py` source code
   entry_point = "hello_pubsub"
 
-  #
-  # event_trigger {
-  #   event_type = "google.storage.object.finalize"
-  #   resource   = "${var.project_id}-input"
-  # }
 
   event_trigger {
     event_type = "google.pubsub.topic.publish"
@@ -72,3 +67,57 @@ resource "google_cloudfunctions_function" "function" {
 
 #Necessário ativar a function api
 #https://console.developers.google.com/apis/api/cloudfunctions.googleapis.com/overview?project=802253915682
+
+
+
+# resource "google_cloudfunctions_function_iam_binding" "binding" {
+#   project        = var.project_id
+#   region         = var.region
+#   cloud_function = google_cloudfunctions_function.function.name
+#   role           = "roles/secretmanager.secretAccessor"
+#   members = [
+#     "serviceAccount:${var.project_id}@appspot.gserviceaccount.com"
+#   ]
+
+#   depends_on = [
+#     google_cloudfunctions_function.function
+#   ]
+# }
+
+
+# resource "google_secret_manager_secret_iam_binding" "binding" {
+#   project = var.function_gcp_project
+#   secret_id = "projects/976455190058/secrets/goku"
+#   role = "roles/secretmanager.secretAccessor"
+#   members = [
+#     "serviceAccount:${var.function_gcp_project}@appspot.gserviceaccount.com"
+#   ]
+# }
+
+
+# data "google_iam_policy" "admin" {
+#   binding {
+#     role = "roles/secretmanager.secretAccessor"
+#     members = [
+#     "serviceAccount:${var.project_id}@appspot.gserviceaccount.com",
+#     ]
+#   }
+#   depends_on = [
+#     google_cloudfunctions_function.function
+#   ]
+# }
+
+# resource "google_secret_manager_secret_iam_policy" "policy" {
+#   project = var.project_id
+#   secret_id = "projects/976455190058/secrets/goku"
+#   policy_data = data.google_iam_policy.admin.policy_data
+# }
+
+
+# resource "google_project_iam_binding" "secretmanagerbinding" {
+#   project = var.project_id
+#   role    = "roles/secretmanager.secretAccessor"
+#   members = [
+#     "serviceAccount:${var.project_id}@appspot.gserviceaccount.com",
+#   ]
+# }
