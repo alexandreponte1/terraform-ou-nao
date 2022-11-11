@@ -4,7 +4,7 @@ variable "gcpkey" {
 
 variable "project_id" {
   type    = string
-  default = "hopeful-summer-368213"
+  default = "projectID"
 
 }
 
