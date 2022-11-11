@@ -1,46 +1,49 @@
 import base64
 import json
 import re
-from sqlite3 import SQLITE_ALTER_TABLE
 from sre_parse import ESCAPES
 from google.cloud import secretmanager
+from random import choice
+import string
 
 
 def read_pubsub(event, context):
     pubsub_message = base64.b64decode(event['data']).decode('utf-8')
-    print(pubsub_message)
     pub = json.loads(pubsub_message)
-    if "state" in pub:
-       state = pub["state"]
-       print(state)
-       secret_id = pub["name"].split("/")[3]
-       print(secret_id)
-       project_id = pub["name"].split("/")[1]
-       print(project_id)
-       if state == "ENABLED":
-          print("OI Mundo")
-          secretmanager_client = secretmanager.SecretManagerServiceClient()
-          response=secretmanager_client.access_secret_version(
-              name=f'projects/{project_id}/secrets/{secret_id}/versions/latest'
+    print(pub)
+    if "rotation" in pub:
+        SECRET_ID = pub["name"].split("/")[3]
+        PROJECT_ID = pub["name"].split("/")[1]
+        tamanho_da_senha = 10
+        caracteres = string.ascii_letters + string.digits
+        SENHA_SEGURA = ''
+        for i in range(tamanho_da_senha):
+         SENHA_SEGURA += choice(caracteres)
+        payload = SENHA_SEGURA
+        print(SECRET_ID,PROJECT_ID)
+        client = secretmanager.SecretManagerServiceClient()
+        parent = f"projects/{PROJECT_ID}/secrets/{SECRET_ID}"
+        payload = payload.encode('UTF-8')
+
+        response = client.add_secret_version(
+            request={
+            "parent": parent,
+            "payload": {"data": payload,}
+            }
           )
-          payload = response.payload.data.decode("UTF-8")
-          # print(format(payload))
-          senha = print(format(payload))
-          print(senha)
+
+        print(f'Added secret version: {response.name}')
+        print(SECRET_ID, PROJECT_ID)
+        print("SEGREDO ATUALIZADO!!!")
     else:
-        print("Tchau Mundo")
+      print("Sem Segredos para Atualizar aqui...")
+    return SECRET_ID, PROJECT_ID
 
 
+# SECRET_ID, PROJECTID = read_pubsub()
 
-
-
-
-
-
-
-
-
-
+# print(SECRET_ID)
+# print(PROJECTID)
 
 
 
@@ -48,44 +51,49 @@ def read_pubsub(event, context):
 
 # def read_pubsub(event, context):
 #     pubsub_message = base64.b64decode(event['data']).decode('utf-8')
-#     print(pubsub_message)
 #     pub = json.loads(pubsub_message)
-#     state = pub["state"]
-#     print(state)
-#     secret_id = pub["name"].split("/")[3]
-#     print(secret_id)
-#     project_id = pub["name"].split("/")[1]
-#     print(project_id)
-#     if state == "ENABLED":
-#         print("OI Mundo")
-#         secretmanager_client = secretmanager.SecretManagerServiceClient()
-#         response=secretmanager_client.access_secret_version(
-#             name=f'projects/{project_id}/secrets/{secret_id}/versions/latest'
-#         )
-#         payload = response.payload.data.decode("UTF-8")
-#         # print(format(payload))
-#         senha = print(format(payload))
-#         print(senha)
-#     else:
-#         print("Tchau Mundo")
+#     SECRET_ID = pub["name"].split("/")[3]
+#     PROJECT_ID = pub["name"].split("/")[1]
+#     print(SECRET_ID)
+#     return SECRET_ID, PROJECT_ID
 
 
+# SECRET_ID, PROJECTID = read_pubsub()
+
+# print(SECRET_ID)
+# print(PROJECTID)
 
 
+# def add_secret_version(secret_id, payload):
+#     PROJECT_ID = PROJECTID
+
+#     client = secretmanager.SecretManagerServiceClient()
+
+#     parent = f"projects/{PROJECT_ID}/secrets/{secret_id}"
+
+#     payload = payload.encode('UTF-8')
+
+#     response = client.add_secret_version(parent=parent, payload={'data': payload})
+
+#     print(f'Added secret version: {response.name}')
+#     return response
 
 
+# def senhasegura():
+  # tamanho_da_senha = 10
+  # caracteres = string.ascii_letters + string.digits
+  # # caracteres = string.ascii_letters + string.digits + string.punctuation
+  # senha_segura = ''
+  # for i in range(tamanho_da_senha):
+  #   senha_segura += choice(caracteres)
+  # return senha_segura
 
-    # {"name":"projects/827031886622/secrets/ponte/versions/2","createTime":"2022-08-30T15:38:39.656666Z","state":"ENABLED","replicationStatus":{"userManaged":{"replicas":[{"location":"us-east1"}]}},"etag":"\"15e7772ca482da\"","clientSpecifiedPayloadChecksum":true}
+
+# pwdnow = senhasegura()
 
 
+# add_secret_version(SECRET_ID, pwdnow)
 
-# nomedaapp/ tipo pra onde vai/ o que eu quero guardar/
-# nomedaApp_SQL_senha_
-
-
-# Sugestão de nome: setor_projeto_ambiente_nomeAplicacao_nomeVariavel
-# Exemplo: financeiro_pagamento_producao_maquinaCartao_tokenMasterCard
-# Em caso de SQL, pode ter um pub/sub  somente para sql que irá triggar somente a function de SQL.
 
 
 

@@ -2,3 +2,4 @@ Nesse caso é necessário incluir a conta de servço da function criada como nov
 
 
 
+gcloud auth activate-service-account SERVICE_ACCOUNT@DOMAIN.COM --key-file=/path/key.json --project=PROJECT_ID
