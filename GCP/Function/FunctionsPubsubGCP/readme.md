@@ -1,3 +1,21 @@
+Nesse caso é necessário incluir a conta de servço da function criada como novo user no projeto e dar permissão de acesso ao secretmanager
+
+
+
+Por mais que eu utilize uma conta de serviço para criar a function, ela aparece criada com outra conta.
+Nesse caso após criar a function é necessário pegar essa conta que normalmente é assim "@appspot.gserviceaccount.com.
+
+Incluir essa conta no projeto com as permissões de acesso ao secret manager(leitura e gravação)
+
+assim é possivel incluir essa senha 
+
+
+
+
+
+
+
+
 
 
 resource "google_project_service" "project" {
