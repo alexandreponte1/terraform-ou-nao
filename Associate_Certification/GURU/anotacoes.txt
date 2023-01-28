@@ -1,0 +1,116 @@
+O que é terraform
+ferramenta de IAC declarativa e cloud agnostic
+
+O que é IAC
+Permite que write a configuration script to automate creatig, updating or destroying a cloud infrastructure.
+IAC is a blueprint of your infrastructure
+IAC alows you to easily share, version or inventory your cloud infrastructure
+
+Popular iac tools
+
+Delarative 
+Explicit
+*terraform
+*cloudformation
+
+
+
+Imperative
+Implict
+does more than declarative
+use programing language ex python, ruby javascript.
+*Pulumi
+*AWS CLOUD DEVELOPMENT KIT (CDK)
+
+
+Infrastructure lifecycle?
+Plan, design, build, test, deliver, maintain and retire cloud infrastructure.
+
+
+Reliability
+IAC makes changes idempotent, consistent, reatable, and predictable
+
+*Idempotent
+no matter how many ties you run IaC, you will always endip with the same state that is expected
+
+
+no Idempotent vs noIdempotent
+
+Provisioning vs deployment vs orchestration
+
+
+Configuration drift (ex caso uma mudança seja feita manualte, vai ficar diferente do que esta no terraformstate)
+*Detect 
+
+*Correct
+terraform refrash and plan commands
+
+
+Prevent
+ Immutable infrastructure
+
+
+
+Mmutable vs Immutable
+
+
+What is GitOps?
+* Introduce a formal process to review and accept changes to infrastructure as co IAC
+
+
+O que é a hasshicorp
+Focar no 
+*terraform
+*terraform Cloud
+
+
+
+Whats is terraform ? 
+*Open source cloud -agnostic infrastructure IAC tool
+
+
+Terraform Cloud ? 
+
+
+
+Terraform lifecycle
+*Code > init > plan > validate > apply > destroy > code
+
+
+
+Terraform plan
+Você pode visualizar o que vai rolar antes do apply
+
+
+
+Visualizing execution plans
+* terraform graph | dot -Tsvg > graph.svg (pode ser aberto no navegador)
+* Resource graph
+
+
+
+Use cases.
+IAC for exotic providers
+
+Terraform core and terraform plugins
+
+
+
+Book
+Terraform up and runnig
+
+
+
+
+
+
+Terraform best practices
+* terraform-best-practices.com ( é algo a mais, não esta na documentação, apenas uma recomendação do que as empresas estão usando)
+
+
+
+Install terraform
+Terraform basics
+
+
+Parei em 2:11:53
