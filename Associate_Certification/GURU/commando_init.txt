@@ -1,0 +1,8 @@
+teraform init inicializa o diretorio que contem o codigo terraform
+
+download os componentes como modulos e plugins
+
+Inicializa o backend do terraform state.
+
+
+
