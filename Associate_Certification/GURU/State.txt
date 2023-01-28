@@ -1,0 +1,36 @@
+O terraform.tfstate pode ser local ou remote
+
+terraform state command
+para modificar e manipular o terraform state
+
+
+
+comandos
+
+terraform state list  (list out all resources tracked by the terraform state file)
+
+terraform state rm  (remove a resource from the terraform state file, and the resource will be no managed by terraform)
+
+terraform state show  (show details of a recource tracked in the terraform state file)
+
+
+Quem permite backend remote state locking
+aws S3
+GCP storage
+hashicorp console
+
+
+terraform backend state on S3
+
+https://github.com/linuxacademy/content-hashicorp-certified-terraform-associate-foundations/tree/master/section5-demo-aws-s3-remote-storage
+
+
+
+
+
+terraform state lab
+
+https://github.com/linuxacademy/content-hashicorp-certified-terraform-associate-foundations/tree/master/section2-hol1
+
+
+
