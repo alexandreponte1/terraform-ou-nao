@@ -1,0 +1,22 @@
+* terraform plan
+
+terraform plan ( cria um plano do que vai ser executado)
+
+Permite um review do plano antes de executar o apply
+
+Nesse stage as credenciais de autenticação são utilizadas.
+
+
+* Terraform apply.
+Deploy as intruções no código
+
+update the deployment state tracking state file
+
+terraform apply cria o state file
+
+
+* terraform destroy.
+Ele avalias o que tem no statefile  e destroi os recursos criados pelo codigo.
+
+
+

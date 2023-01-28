@@ -1,0 +1,66 @@
+Terraform provisioners
+When to use Then ?
+
+
+
+Provisioner é tipo pra executar comandos e etc, da pra executar local criar arquivos e etc.
+
+
+
+resource "null_resource" "mk" {
+  provisioner "local-exec" {
+    command = "echo '0' > status.txt"
+  }
+  provisioner "local-exec" {
+    when    = destroy
+    command = "echo '1' > status.txt"
+  }
+}
+
+
+
+
+resource "aws_instance" "example" {
+  ami           = "ami-abc123"
+  instance_type = "t2.micro"
+  key_name
+  associate
+
+  lifecycle {
+    # The AMI ID must refer to an AMI that contains an operating system
+    # for the `x86_64` architecture.
+    precondition {
+      condition     = data.aws_ami.example.architecture == "x86_64"
+      error_message = "The selected AMI must be for the x86_64 architecture."
+    }
+  }
+}
+
+
+
+resource "aws_instance" "ec2-virtual-machine" {
+  ami                        = "ami-abc123"
+  instance_type              = "t2.micro"
+  key_name                   = aws_key_pair.master-key.key_name
+  associate_public_ip_addres = true
+  vpc_security_group_ids     = [aws_security_group.gitlab-sg.id]
+  subnet_id                  = aws_subnet.subnet.id
+  provisioners "local-exec"{
+    command = "aws ec2 wait instance-status-ok --region us-east-1 --instance-ids ${self.id}"
+  }
+}
+
+
+aws_instance.ec2-virtual-machine.id
+(vai trazer a imagem que a ec2 esta usando)
+provisioner só vai rolar com coisas que existem, por isso que tem o atributo self ${self.id}
+
+
+
+❯ #cat /Users/alexandre.s.ponte/.config/gcloud/application_default_credentials.json > /Users/alexandre.s.ponte/Downloads/segredinho.json
+
+
+
+Olá Alex, bom dia, estava testando ontem novamente e lendo a documentação.
+O DLP tem um limite de arquivo, sendo o maximo 60mb, fiz um teste na minha conta funcionou, depois fiz um teste na conta da latam e funcionou também.
+

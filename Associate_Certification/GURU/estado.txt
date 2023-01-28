@@ -1,0 +1,5 @@
+Terraform state
+Resource Tracking
+
+A way for terraform to keep tabs on what has been deployed
+

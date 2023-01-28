@@ -1,0 +1,7 @@
+A module is a container for multiple resources tha are used together
+
+Reused code
+
+make code reusable elsewhere.
+
+
