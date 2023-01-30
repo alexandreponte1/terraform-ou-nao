@@ -1,0 +1,95 @@
+Type Constraints terrafom variables
+
+Type constraints control the type of variable values
+
+
+
+* Primitive (Single type value)
+number, string, bool
+
+Exemples:
+
+replicas = 3
+name     = "Cluster2"
+backup	 = true
+
+* Complex (Multiple types in a single variable)
+list, tuple, map, object
+
+Exemple
+
+Variable with multiple values assign
+
+var = prod, 2, vpc
+
+
+The complex types can be broken in two types
+
+First: 
+Collection, types allow multiple vlues of one primitive type to be grouped together
+
+Contructors ofr these Collections include:
+
+* list(type) strings
+* map(type) numbers
+* set(type) strings
+
+
+
+Exemple of Collections
+
+
+Variable will be a list of several Strings
+
+
+variable "training" {
+	type 	= list(strings)
+	default = ["ACG", "LA"]  ## to separate strings inside one variable
+}
+
+
+Second:
+
+Complex types - Structural
+
+Structural types allow multiple values of different primitive types to be grouped together
+
+Constructors for these Collections include
+
+- object(type)
+- tuple(type)
+- set(type)
+
+More than one type o value into a variable
+
+
+vaiable "instructor"{
+	name = string        #Primative types
+	age  = number        #Several named attributes
+}
+
+Object type containing several variables within
+
+
+
+Dinamic Types = THe "ANY" constraint
+
+ANY is a placeholder for a primitive type yet to be decided
+Actual type of a variable will be determined by at runtime by terraform
+
+
+variable "data"{
+	type = list(any)
+	default = [1, 42, 4]
+}
+
+Terraform will recognizes all values as numbers in one variable
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+Built-in Functions and Dynamic Blocks
+
+General syntax:  function_name(arg1,arg2,...)
+
+
+Permite criar codigos flexiveis e dinamicos utilizando terraform
+
+variable "project-name"{
+      type = string
+      default = "prod"
+}
+
+
+### aqui estamos utilizando a funcão "JOIN"
+resource "aws_vpc" "my-vpc" {
+    cidr_block = "10.0.0.0/16"
+    tags = {
+      name = join("-",["terraform", var.project-name])
+    }
+}
+
+
+
+Lista de functions no terraform
+https://developer.hashicorp.com/terraform/language/functions
+
+- file
+- max
+- flatten
+
+
+entrar no terraform console
+
+terraform console
+
+da pra testar essas funções no console do terraform
+
+
+max(5, 12, 9)
+
+timestamp()
+
+
+
+join(separator, list)
+
+
+
+> join("_",["dragon", "ball"])
+"dragon_ball"
+
+
+
+
+# tem uma lista e valores, preciso saber se o valor esta dentro da lista
+contains(list, value)
+
+> contains(["a", "b", "c"], "a")
+true
+> contains(["a", "b", "c"], "d")
+false
+
+
+

@@ -1,0 +1,61 @@
+Modulos podem ser baixados ou referenciados apartir de:
+
+Terraform public Registry (terraform baixa os modulus e o salva em um diretório privado)
+
+Registry privado (normalmente empresas usam isso)
+
+
+modulos são referenciados usando um module block
+
+
+
+module "my-vpc-module"{
+  source  = "./module/vpc"   -> (module source (mandatory))
+  version = "0.0.5"          -> (Module version)
+  region  = var.region       -> (Input parameter(s) for module)
+}
+
+
+other parameters allowed inside the module block:
+count, for_each, providers, depends_on
+
+
+
+
+Como referenciar um output de um module exemplo:
+
+
+resource "aws_instance" "my-vpc-module"{
+  .......# other arguments
+  subnet_id = module.my-vpc-module.subnet_id  -> (module output pra usar)
+}
+
+#####################
+
+
+Interagindo com modulos
+
+
+os inputs dos modulos são parametros que você passa dentro do modulo block
+
+
+module "my-vpc-module"{
+  source  = "./module/vpc"   -> (module source (mandatory))
+  server-name = "us-east-1"  ->  Input parameter(s) for module
+}
+
+
+o output do modulo pode ser referenciado dentro do main code
+
+module.<name-of-module>.<name-of-output>
+
+
+output "ip_address"{
+  value = aws_instance.private_ip
+}
+
+module.my-vpc-module.ip_address
+
+
+Como funções de linguagem de programação.
+
