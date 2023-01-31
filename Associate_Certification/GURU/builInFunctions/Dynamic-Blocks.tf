@@ -56,7 +56,3 @@ variable "rules" {
     }
   ]
 }
-
-
-
-
