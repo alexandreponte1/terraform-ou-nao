@@ -1,0 +1,24 @@
+Best practice terraform vault 
+provider for injecting secrets securely
+
+
+Hasshicorp vault
+
+is a secret manager software
+
+dinamically provision credentials and rotates then
+
+Encrypts sensitive data in transit and at rest and provides fine-grained access to secrets using ACLs.
+
+why do we need vault
+
+
+expansão de credenciais
+
+Vault inject secrets durant a depoyment on the fly
+
+Vault allows you to provide short-lived, temp credentials that allow for users to have only the permissions they need to deploy the infrastructure. The credentials will rotate according to the rotation schedule you define. This allows you to not have to worry about keeping up with long-lived credentials.
+
+Vault allows you to store any sensitive data securely and can be used with all your configurations. This also integrates with cloud vendors like AWS, Azure, and GCP to allow for easy configuration across all your cloud vendors.
+
+Vault allows you to store any sensitive data securely and can be used with all your configurations. This really helps, especially once your infrastructure configurations get large and complicated.

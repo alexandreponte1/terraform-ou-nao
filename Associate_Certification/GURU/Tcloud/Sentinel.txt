@@ -1,0 +1,34 @@
+Beneficios do Sentinel
+Uma feature do da versão Enterprise do Terraform.
+
+Enforces policies on your code.
+
+The policies inherent to the Sentinel framework enforce restrictions on your Terraform code to ensure that dangerous or malicious Terraform code is stopped, even before it gets executed or applied via the terraform apply command.
+
+The policies inherent to the Sentinel framework ensure that dangerous or malicious Terraform code is stopped, even before it gets executed or applied via the terraform apply command.
+
+has its own language  - Sentinel language
+Designed to be approachable by non programmers
+
+A integração acontce no Terraform Enterprise.
+.
+
+Benefits
+
+Sandboxing  - Guardrais for atutomation.
+
+Codification  - Easier undertanding, better collaboration
+
+version control
+
+testing and automation.
+
+
+
+For enforcing CIS standarts across aws accounts.
+checking to make sure only t3.micro instance types are used
+ensuring security groups do not allow traffic on port 22.
+sentinel usa uma linguagem propria
+
+
+

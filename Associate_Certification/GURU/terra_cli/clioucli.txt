@@ -21,6 +21,36 @@ To cause profisioner to run
 replace misbehaving resource forcefully
 to mimic side effect of recreation no modeled by any attributes of the resource.
 
+você marca e no proximo terraform apply o recurso é recriado 
+
+Exemplo
+
+
+[cloud_user@ip-10-0-1-57 terraform]$ terraform taint aws_instance.ec2-vm
+Resource instance aws_instance.ec2-vm has been marked as tainted.
+
+
+
+[cloud_user@ip-10-0-1-57 terraform]$ cat terraform.tfstate | grep tainted -A6 -B5
+      "type": "aws_instance",
+      "name": "ec2-vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "status": "tainted",
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-007868005aea67c54",
+            "arn": "arn:aws:ec2:us-east-1:181309810431:instance/i-04fa319328516cd44",
+            "associate_public_ip_address": true,
+            "availability_zone": "us-east-1a",
+
+
+
+
+
+
+
 
 
 ------------------------------------------------------------------------------------
@@ -46,6 +76,29 @@ when you need to work with existing resources
 not allowed to create new resources
 when you are no in control of creation process of infrastructure.
 
+
+terraform import <resource-address> <unmanaged-resource-id>
+
+exemplo
+
+import_server: i-018d5927aa03838c3
+
+
+
+
+terraform import
+
+
+musbe includ in the code before run the terraform in the console 
+
+resource "aws_instance" "webserver2" {}   
+
+
+terraform import aws_instance.webserver2 i-018d5927aa03838c3
+
+
+
+must be in the code the resource and use the id of what you want to import.
 
 ------------------------------------------------------------------------------------
 
@@ -75,6 +128,15 @@ terraform{
 
 
 
+
+
+
+1. Processo	
+2. Preparación	
+3. Templates	
+4. Creación de Job	
+5. Consideraciones sobre el proceso	
+6. Limitaciones usando DLP.
 
 
 

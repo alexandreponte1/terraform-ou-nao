@@ -1,0 +1,13 @@
+Benefits of Terraform Registry.
+
+A repository of publicly  avaliable Terraform providers and modules.
+
+you can publish and share your own modukes, too.
+
+https://registry.terraform.io
+
+Da pra contribuir com outras pessoas e realizar mudanças nos modulos.
+
+
+
+The Terraform public registry links end users with the providers that power all of Terraform’s resource types and/or helps them find modules for quickly deploying common infrastructure configurations. Terraform Registry

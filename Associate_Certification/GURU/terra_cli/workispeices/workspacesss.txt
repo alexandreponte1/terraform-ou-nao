@@ -1,0 +1,45 @@
+Terraform workspaces (cli)
+
+The terraform workspaces are alternate statefiles within the same working directory
+
+Terraform starts with a single workspace that is almays called DEFAULT. It cannot be deleted.
+
+
+terraform workspace new <WORKSPACE-NAME>    (create a workspace)
+terraform workspace select <WORKSPACE-NAME>  (select a workspace)
+
+Scenario:
+
+Test changes using a parallel, distinct copy of insfrastructure.
+It can be modeled against branches in version control such as Git.
+
+
+
+Each workspace tracks a separate independent copy of the state file.
+
+Terraform will deploy a new envirolment for each workspace, you can test a diferent envirolment using the same code.
+
+
+Workspace are ment to share resources and to help enable collaboration between teams.
+
+
+Access to a workspace name is provided through the ${terraform.workspace} variable.
+
+
+
+Example 1:
+resource "aws_instance" "example" {
+  count = terraform.workspace == "default" ? 5 : 1
+  # ... other arguments
+
+}
+
+Example 2:
+
+resource "aws_s3_bucket" "bucket"{
+  bucket = "myxzbucket-${terraform.workspace}"
+  acl    = "private"
+}
+
+
+

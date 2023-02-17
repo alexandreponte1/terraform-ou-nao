@@ -1,0 +1,22 @@
+https://developer.hashicorp.com/terraform/tutorials/certification/associate-review
+
+terraform workflow (write > Plan Apply)
+
+knowm when to use
+
+init  state plan  fmt apply validate
+
+Pratice and undertand Terraform state mechanism very well !!!!!
+know the state commands
+
+Familiarize with HCL language
+
+
+
+know the different between terraform opensource and Enterprise offerings
+
+
+
+
+
+verify.acloud.guru/B82DAB0566AD
