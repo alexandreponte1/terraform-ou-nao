@@ -35,7 +35,6 @@ https://github.com/linuxacademy/content-hashicorp-certified-terraform-associate-
 
 
 
-
 The terraform state command and its subcommands can be used for various tasks related to the Terraform state. Some of the tasks that can be performed using the terraform state command are:
 
 
@@ -52,3 +51,4 @@ By using the terraform state command and its subcommands, users can manage and m
 https://developer.hashicorp.com/terraform/cli/commands/state/list
 
 https://developer.hashicorp.com/terraform/cli/state
+

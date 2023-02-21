@@ -1,3 +1,10 @@
+variable "aws_region" {
+  type        = string
+  description = ""
+  default     = "us-east-1"
+}
+
+
 # variable "amis" {
 #   type = map(string)
 #   #Altere a imagem conforme a região
@@ -10,7 +17,7 @@
 
 variable "cdirs_acesso_remoto" {
   type    = list(string)
-  default = ["170.80.210.149/32"]
+  default = ["0.0.0.0/32"]
 }
 
 #Recomendo configurar um profile

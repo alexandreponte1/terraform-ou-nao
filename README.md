@@ -4,8 +4,6 @@ Repositório dedicado ao meu aprendizado com terraform.
 
 
 
-
-
 -------------------------------------------------------------------
 
 
