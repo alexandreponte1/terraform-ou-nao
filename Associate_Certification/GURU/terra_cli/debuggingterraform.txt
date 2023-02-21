@@ -1,0 +1,25 @@
+Debugging Terraform - TF_LOG and TF_LOG_PATH
+
+
+* TF_LOG is an environment variable for enabling verbose logging in Terraform.
+By default, it will sendo logs to stderr (standard erro output).
+
+Can be set to the following levels:  TRACE, DEBUG, INFO, WARN, ERROR
+
+
+
+TRACE is the most verbose level of logging and the most  reliable one. (show backend call mad to providers)
+
+
+To persist logged output, use the TF_LOG_PATH environment variable.
+you can redirect logs to file using TF_LOG_PATH
+
+To set its value we can use the export command in linux like below.
+
+Setting logging environment variables for terraform on Linux:
+
+export TF_LOG=TRACE
+export TF_LOG_PATH=./terraform.log
+
+By default TF_LOG is disable.
+

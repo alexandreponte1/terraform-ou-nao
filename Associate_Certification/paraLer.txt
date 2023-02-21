@@ -1,0 +1,57 @@
+
+https://developer.hashicorp.com/terraform/tutorials/certification/associate-review
+
+
+
+
+
+https://developer.hashicorp.com/terraform/language/functions/index_function
+
+
+https://www.datocms-assets.com/2885/1602500234-terraform-full-feature-pricing-tablev2-1.pdf
+
+
+https://developer.hashicorp.com/terraform/language/expressions/types
+
+
+https://developer.hashicorp.com/terraform/cli/v1.1.x/state/resource-addressing
+
+
+https://developer.hashicorp.com/terraform/cloud-docs/vcs#supported-vcs-providers
+
+
+https://developer.hashicorp.com/terraform/registry/modules/publish#requirements
+
+
+
+https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments-and-blocks
+
+
+
+Explicação
+
+The terraform apply -replace command manually marks a Terraform-managed resource for replacement, forcing it to be destroyed and recreated on the apply execution.
+
+You could also use terraform destroy -target <virtual machine> and destroy only the virtual machine and then run a terraform apply again.
+
+
+IMPORTANT - PLEASE READ
+
+This command replaces terraform taint, which was the command that would be used up until 0.15.x. You may still see terraform taint on the actual exam until it is updated.
+
+
+https://developer.hashicorp.com/terraform/cli/commands/taint
+
+https://developer.hashicorp.com/terraform/cli/commands/plan#replace-address
+
+
+
+    variable "aws_region" {
+      type        = string
+      description = "region used to deploy workloads"
+      default     = "us-east-1"
+      validation {
+        condition     = can(regex("^us-", var.aws_region))
+        error_message = "The aws_region value must be a valid region in the USA, starting with \"us-\"."
+      }
+    }

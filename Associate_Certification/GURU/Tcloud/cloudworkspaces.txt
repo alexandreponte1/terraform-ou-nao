@@ -1,0 +1,53 @@
+Terraform Cloud Workspaces.
+
+
+the Workspaces feature in Terraform cloud does the same thing as the open source Terraform Workspaces feature.
+
+Terraform Workspaces is like directories hosted in Terraform cloud where you don't need to worry about segregation, storage, and even security of your Workspaces.
+
+
+
+maintains a record of all executions activity
+
+All Terraform commands executed on "managed terraform clouds".
+
+interacte with terraform api's.
+
+--------------------------------------------------------
+
+
+differentiating Between Terraform Open source and terraform cloud Workspaces.
+
+
+
+Terraform open source workspaces
+
+basically create alternate state files against code in the same directory
+stores alternate state files in same working directory.
+
+you can make different deployments against the same code.
+
+
+
+--------------------------------------------------------
+Terraform Cloud (Sumary)
+
+Colaboration oriented Terraform workflow.
+
+- remote terraform execution
+- version control integration (github, bitbucket e etc)
+- workspace based organization base model
+- remote state management and cli integration, 
+- Private terraform module registry, API UI and cli based acces.
+- cost estimation( AWS, GCP and azure only) and sentinel integration features.
+
+
+
+
+
+
+
+Terraform does not automatically back up your configuration to Terraform Cloud. If you are running Terraform locally, it stores the configuration in the designated directory on your machine.
+
+
+Though Terraform Cloud integrates and can use repositories like GitHub and BitBucket, it does not have version control built in.

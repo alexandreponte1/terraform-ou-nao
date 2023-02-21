@@ -1,0 +1,150 @@
+*Terraform fmt (para formatar o código em terraform)
+Antes de subir o codigo é bom usar ele ou atualização dos modulos ou qualquer mudança que você fizar no código.
+
+
+------------------------------------------------------------------------------------
+
+
+*terraform taint.
+Marca algum recurso terraform para ser destroyd e recreated
+Modify the state file only, which causes the recreation workflow
+after you tain something, it will be recreated in the next terrafom apply
+Tainting a resource may cause other resources to be modified, beacause of the dependency
+Command syntax
+
+terraform taint RESOURCE_ADDRESS
+
+
+Scenario
+
+To cause profisioner to run
+replace misbehaving resource forcefully
+to mimic side effect of recreation no modeled by any attributes of the resource.
+
+você marca e no proximo terraform apply o recurso é recriado 
+
+Exemplo
+
+
+[cloud_user@ip-10-0-1-57 terraform]$ terraform taint aws_instance.ec2-vm
+Resource instance aws_instance.ec2-vm has been marked as tainted.
+
+
+
+[cloud_user@ip-10-0-1-57 terraform]$ cat terraform.tfstate | grep tainted -A6 -B5
+      "type": "aws_instance",
+      "name": "ec2-vm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "status": "tainted",
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-007868005aea67c54",
+            "arn": "arn:aws:ec2:us-east-1:181309810431:instance/i-04fa319328516cd44",
+            "associate_public_ip_address": true,
+            "availability_zone": "us-east-1a",
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+
+
+Terraform import
+
+Maps existing resources to Terraform using an "ID"
+"ID"is dependent on the underlying vendor, for example to impor an AWS EC@ instance you will need to provide its instance ID.
+
+Importante the same resource to multiple Terraform resources can cause unknown behavior and is not recomemended.
+
+
+Command syntax
+
+terraform import Resource_address ID
+
+this the resource name tha you want to map to the real world
+
+
+Scenario:
+when you need to work with existing resources
+not allowed to create new resources
+when you are no in control of creation process of infrastructure.
+
+
+terraform import <resource-address> <unmanaged-resource-id>
+
+exemplo
+
+import_server: i-018d5927aa03838c3
+
+
+
+
+terraform import
+
+
+musbe includ in the code before run the terraform in the console 
+
+resource "aws_instance" "webserver2" {}   
+
+
+terraform import aws_instance.webserver2 i-018d5927aa03838c3
+
+
+
+must be in the code the resource and use the id of what you want to import.
+
+------------------------------------------------------------------------------------
+
+Terraform configuration block
+A especial configuration block for controling Terraforms own beahvior.
+This block only allowns constant values, named resources and variables are not allowed in it.
+
+
+examples include:
+configuring backend for storing state files.
+specifying a required Terraform version.
+Specifying a required Terraform Provider version and its requirements.
+Enable and test Terraform experimental features.
+Passing metadata to providers.
+
+
+
+example of the terraform configuration block
+
+
+terraform{
+  required_version = ">=0.13.0"
+  required_providers{
+    aws = ">=3.0.0"
+  }
+}
+
+
+
+
+
+
+1. Processo	
+2. Preparación	
+3. Templates	
+4. Creación de Job	
+5. Consideraciones sobre el proceso	
+6. Limitaciones usando DLP.
+
+
+
+
+
+
+
+
+
+
+

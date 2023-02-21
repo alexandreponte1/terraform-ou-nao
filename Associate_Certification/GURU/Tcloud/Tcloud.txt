@@ -1,0 +1,3 @@
+This was part of the primary reason Terraform Cloud was created. It includes easy access to shared state and secret data, access controls for approving changes to infrastructure, detailed policy controls for governing the contents of Terraform configurations, and more.
+
+Terraform Cloud was created to allow for easy access to shared state and secret data that can be easily used and modified by a team.
