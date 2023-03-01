@@ -11,3 +11,8 @@ variable "nome_repositorio" {
 variable "cluster_name" {
   type = string
 }
+
+variable "profile" {
+  default = "playground"
+
+}
