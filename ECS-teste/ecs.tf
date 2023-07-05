@@ -8,7 +8,7 @@ resource "aws_ecs_service" "nginx" {
   task_definition = aws_ecs_task_definition.sonar.arn
   desired_count   = 1
   launch_type     = "FARGATE"
-  # platform_version = "1.4.0" //not specfying this version explictly will not currently work for mounting EFS to Fargate
+  platform_version = "1.4.0" //not specfying this version explictly will not currently work for mounting EFS to Fargate
 
   network_configuration {
     security_groups  = [aws_security_group.nginx2.id]
@@ -24,7 +24,6 @@ resource "aws_ecs_task_definition" "sonar" {
   cpu                      = "1024"
   memory                   = "4096"
   network_mode             = "awsvpc"
-
   container_definitions = <<DEFINITION
 [
   {
@@ -68,3 +67,4 @@ DEFINITION
     }
   }
 }
+
