@@ -12,3 +12,7 @@ resource "aws_efs_mount_target" "mount" {
   #   Name = "ECS-EFS-MNT"
   # }
 }
+
+resource "aws_efs_access_point" "test" {
+  file_system_id = aws_efs_file_system.foo.id
+}
