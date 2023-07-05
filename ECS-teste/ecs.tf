@@ -3,11 +3,11 @@ resource "aws_ecs_cluster" "nginx2" {
 }
 
 resource "aws_ecs_service" "nginx" {
-  name             = "sonar-example"
-  cluster          = aws_ecs_cluster.nginx2.id
-  task_definition  = aws_ecs_task_definition.sonar.arn
-  desired_count    = 2
-  launch_type      = "FARGATE"
+  name            = "sonar-example"
+  cluster         = aws_ecs_cluster.nginx2.id
+  task_definition = aws_ecs_task_definition.sonar.arn
+  desired_count   = 1
+  launch_type     = "FARGATE"
   platform_version = "1.4.0" //not specfying this version explictly will not currently work for mounting EFS to Fargate
 
   network_configuration {
@@ -21,15 +21,14 @@ resource "aws_ecs_service" "nginx" {
 resource "aws_ecs_task_definition" "sonar" {
   family                   = "sonar-example"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "256"
-  memory                   = "512"
+  cpu                      = "1024"
+  memory                   = "4096"
   network_mode             = "awsvpc"
-
   container_definitions = <<DEFINITION
 [
   {
-      "memory": 128,
-      "cpu": 10,
+      "memory": 4096,
+      "cpu": 1024,
       "portMappings": [
           {
               "name": "sonarqube-9000-tcp",
@@ -68,3 +67,4 @@ DEFINITION
     }
   }
 }
+
