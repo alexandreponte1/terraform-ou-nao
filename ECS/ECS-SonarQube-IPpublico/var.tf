@@ -9,3 +9,11 @@ variable "aws_profile" {
   description = " "
   default     = "playground"
 }
+
+
+
+variable "ambiente" {
+  type        = string
+  description = " "
+  default     = "SonarQube"
+}
