@@ -17,3 +17,8 @@ variable "ambiente" {
   description = " "
   default     = "SonarQube"
 }
+
+variable "cargoIAM" {
+  type    = string
+  default = "producao"
+}

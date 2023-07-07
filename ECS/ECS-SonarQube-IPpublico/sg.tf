@@ -22,3 +22,22 @@ resource "aws_security_group" "SonarQube" {
     Name = "SonarQube"
   }
 }
+
+
+
+# resource "aws_security_group" "EFS" {
+#   name        = "EFS-SG"
+#   description = "Allow EFS-SG"
+#   vpc_id      = module.vpc.vpc_id
+
+#   ingress {
+#     from_port       = 2049
+#     to_port         = 2049
+#     protocol        = "tcp"
+#     security_groups = [aws_security_group.SonarQube.id]
+
+#   }
+#   tags = {
+#     Name = "EFS-SG"
+#   }
+# }
