@@ -12,38 +12,38 @@ module "ecs" {
 }
 
 
-resource "aws_ecs_task_definition" "sonar" {
-  family                   = "sonar-example"
+resource "aws_ecs_task_definition" "fringe" {
+  family                   = "fringe-example"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "1024"
-  memory                   = "4096"
+  cpu                      = "256"
+  memory                   = "512"
   network_mode             = "awsvpc"
   execution_role_arn       = aws_iam_role.ECS.arn
   container_definitions = jsonencode(
     [
       {
-        "name"      = "sonarqube"
-        "image"     = "sonarqube:9.8-community"
-        "cpu"       = 1024
-        "memory"    = 4096
+        "name"      = "fringe"
+        "image"     = "alexandreponte/fringe"
+        "cpu"       = 256
+        "memory"    = 512
         "essential" = true
         "portMappings" = [
           {
-            "containerPort" = 9000
-            "hostPort"      = 9000
+            "containerPort" = 80
+            "hostPort"      = 80
           }
         ],
         #   "mountPoints" = [
         #   {
         #      "sourceVolume" = "data",
-        #      "containerPath" = "/opt/sonarqube/data",
+        #      "containerPath" = "/opt/fringe-container/data",
         #      "readOnly" = false
         #  }
         #   ],
         "logConfiguration" = {
           "logDriver" = "awslogs",
           "options" = {
-            "awslogs-group"         = "sonarqube",
+            "awslogs-group"         = "fringe",
             "awslogs-create-group"  = "true"
             "awslogs-region"        = "us-east-1",
             "awslogs-stream-prefix" = "ecs"
@@ -61,16 +61,16 @@ resource "aws_ecs_task_definition" "sonar" {
   # }
 }
 
-resource "aws_ecs_service" "SonarSonarQubeQube" {
-  name             = "sonar-example"
+resource "aws_ecs_service" "fringe" {
+  name             = "fringe-example"
   cluster          = module.ecs.ecs_cluster_id
-  task_definition  = aws_ecs_task_definition.sonar.arn
+  task_definition  = aws_ecs_task_definition.fringe.arn
   desired_count    = 1
   launch_type      = "FARGATE"
   platform_version = "1.4.0" //not specfying this version explictly will not currently work for mounting EFS to Fargate
 
   network_configuration {
-    security_groups  = [aws_security_group.SonarQube.id]
+    security_groups  = [aws_security_group.fringe-container.id]
     subnets          = module.vpc.public_subnets
     assign_public_ip = true
   }
