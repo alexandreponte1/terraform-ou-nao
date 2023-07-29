@@ -1,5 +1,5 @@
 # output "complete_unvoke_url" {
-#   value = "${aws_api_gateway_deployment.dev.invoke_url}${aws_api_gateway_stage.example.stage_name}/${aws_api_gateway_resource.toguro.path_part}"
+#   value = "${aws_api_gateway_deployment.dev.invoke_url}${aws_api_gateway_stage.example.stage_name}/${aws_api_gateway_resource.usuario.path_part}"
 # }
 
 
@@ -8,6 +8,6 @@
 # }
 
 
-# output "api_url" {
-#   value = aws_api_gateway_deployment.deployment1.invoke_url
-# }
+output "api_url" {
+  value = aws_api_gateway_deployment.dev.invoke_url
+}
