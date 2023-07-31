@@ -14,12 +14,12 @@ variable "aws_profile" {
 variable "api_name1" {
   type        = string
   description = ""
-  default     = "jupiter"
+  default     = "jupiter1"
 }
 
 
 variable "api_name2" {
   type        = string
   description = ""
-  default     = "terra"
+  default     = "terra2"
 }
