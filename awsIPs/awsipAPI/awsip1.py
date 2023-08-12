@@ -2,7 +2,7 @@ from requests import get
 import json
 import numpy as np
 from urllib.request import urlopen
-
+from botocore.vendored import requests
 
 def lambda_handler():
     URL_JSON = 'https://ip-ranges.amazonaws.com/ip-ranges.json'
