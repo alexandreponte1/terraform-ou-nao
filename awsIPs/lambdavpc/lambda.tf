@@ -95,9 +95,6 @@ EOF
 }
 
 
-
-# IAM role which dictates what other AWS services the Lambda function
-# may access.
 resource "aws_iam_role" "lambda_role" {
   name = "role_lambda"
 
@@ -136,8 +133,7 @@ resource "aws_cloudwatch_log_group" "lambdavpc" {
 
 
 
-
-
+# aws lambda invoke --function-name firstFunction outfile
 
 
 
