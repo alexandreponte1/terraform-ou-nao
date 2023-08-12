@@ -1,0 +1,29 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"ec2:CreateNetworkInterface",
+				"ec2:DeleteNetworkInterface",
+				"ec2:AttachNetworkInterface"
+			],
+			"Resource": [
+				"arn:aws:ec2:*:${var.accountId}:security-group/*",
+				"arn:aws:ec2:*:${var.accountId}:network-interface/*",
+				"arn:aws:ec2:*:${var.accountId}:subnet/*",
+				"arn:aws:ec2:*:${var.accountId}:instance/*"
+			]
+		},
+		{
+			"Sid": "VisualEditor1",
+			"Effect": "Allow",
+			"Action": [
+				"ec2:DescribeInstances",
+				"ec2:DescribeNetworkInterfaces"
+			],
+			"Resource": "*"
+		}
+	]
+}
