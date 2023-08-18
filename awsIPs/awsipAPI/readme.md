@@ -20,5 +20,4 @@ from urllib.request import urlopen
 Verificar quais bibliotecas padrão existem na aws
 
 
-
 https://medium.com/wescale/how-to-lightweight-your-python-aws-lambda-functions-with-aws-lambda-layer-docker-and-terraform-b48602e76e8b
