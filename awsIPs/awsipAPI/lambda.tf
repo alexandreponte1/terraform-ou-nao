@@ -13,6 +13,12 @@ resource "aws_lambda_function" "myLambda" {
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   depends_on    = [aws_cloudwatch_log_group.lambda_log_group]
 
+    environment {
+    variables = {
+      ipsdynamo = var.ipsdynamo
+    }
+
+    }
 }
 
 # IAM role which dictates what other AWS services the Lambda function

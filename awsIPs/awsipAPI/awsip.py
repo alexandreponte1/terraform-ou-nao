@@ -13,6 +13,7 @@ resultado = list(filter(lambda person: person['service'] == 'DYNAMODB' and perso
 arrayresultado = list(map(lambda x: x["ip_prefix"] in ip, resultado ))
 
 # print(arrayresultado)
+print (ip)
 
 
 #all verifica se todos os itens do array são true
