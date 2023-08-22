@@ -24,6 +24,14 @@ variable "accountId" {
 
 
 variable "function_name" {
-  default = "firstFunction"
+  default = "jupiter1"
 
+}
+
+
+
+
+variable "ipsdynamo" {
+  default = "['52.94.4.0/24', '35.71.102.0/24']"
+  
 }
