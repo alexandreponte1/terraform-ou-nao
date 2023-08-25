@@ -85,5 +85,14 @@ resource "aws_lambda_permission" "with_sns" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.myLambda.function_name
   principal     = "sns.amazonaws.com"
-  source_arn    = aws_sns_topic.sns.arn
+  # source_arn    = aws_sns_topic.sns.arn
+  source_arn  = var.dynamoSNS
+}
+
+
+resource "aws_sns_topic_subscription" "subscription" {
+  # topic_arn = aws_sns_topic.sns.arn
+  topic_arn = var.dynamoSNS
+  protocol  = "lambda"
+  endpoint  = aws_lambda_function.myLambda.arn
 }
