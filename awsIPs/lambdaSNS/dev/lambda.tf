@@ -6,19 +6,22 @@ data "archive_file" "lambda_zip" {
 
 resource "aws_lambda_function" "myLambda" {
   filename         = "lambda_function.zip"
-  function_name    = var.function_name
+  function_name    = "${var.function_name}-${var.environment}"
   role             = aws_iam_role.lambda_role.arn
-  handler          = "awsip.lambda_handler"
-  runtime          = "python3.8"
+  handler          = var.handler
+  memory_size      = var.memory_size
+  runtime          = var.runtime
+  timeout          = var.timeout
+  architectures    = ["${var.architectures}"]
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
-  depends_on    = [aws_cloudwatch_log_group.lambda_log_group]
+  depends_on       = [aws_cloudwatch_log_group.lambda_log_group]
 
-    environment {
+  environment {
     variables = {
       ipsdynamo = var.ipsdynamo
     }
 
-    }
+  }
 }
 
 # IAM role which dictates what other AWS services the Lambda function
@@ -46,7 +49,7 @@ EOF
 
 
 resource "aws_iam_policy" "function_logging_policy" {
-  name   = "function-logging-policy"
+  name = "function-logging-policy"
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -71,7 +74,7 @@ resource "aws_iam_role_policy_attachment" "function_logging_policy_attachment" {
 
 
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name              = "/aws/lambda/${var.function_name}"
+  name              = "/aws/lambda/${var.function_name}-${var.environment}"
   retention_in_days = 7
   lifecycle {
     prevent_destroy = false
@@ -86,7 +89,7 @@ resource "aws_lambda_permission" "with_sns" {
   function_name = aws_lambda_function.myLambda.function_name
   principal     = "sns.amazonaws.com"
   # source_arn    = aws_sns_topic.sns.arn
-  source_arn  = var.dynamoSNS
+  source_arn = var.dynamoSNS
 }
 
 

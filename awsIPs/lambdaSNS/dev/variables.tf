@@ -12,10 +12,46 @@ variable "aws_profile" {
 
 
 
+variable "environment" {
+  type    = string
+  default = "dev"
+}
+
+
+#############################
+#var lambda
+
 variable "function_name" {
   default = "dynamoips"
 
 }
+
+variable "handler" {
+  type    = string
+  default = "awsip.lambda_handler"
+}
+
+variable "memory_size" {
+  type    = number
+  default = 2048
+}
+
+variable "runtime" {
+  type    = string
+  default = "python3.8"
+}
+
+
+variable "timeout" {
+  type    = number
+  default = 10
+}
+variable "architectures" {
+  type    = string
+  default = "x86_64"
+}
+
+
 
 
 variable "ipsdynamo" {
@@ -26,8 +62,8 @@ variable "ipsdynamo" {
 
 variable "dynamoSNS" {
   type    = string
-  default = "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged"
-
+  # default = "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged"
+  default = "arn:aws:sns:us-east-1:699248326816:awsips"
 }
 
 
@@ -92,7 +128,7 @@ variable "alarm_threshold" {
 }
 
 variable "alarm_names" {
-  type = string
+  type    = string
   default = "lambda-Alarmeeee"
 }
 
